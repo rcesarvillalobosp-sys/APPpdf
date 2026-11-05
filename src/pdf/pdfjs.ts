@@ -18,7 +18,8 @@ let loader: () => Promise<PdfJs> = async () => {
   return mod;
 };
 let cached: Promise<PdfJs> | null = null;
-let assetBase = '/pdfjs/';
+// BASE_URL permite publicar en una subruta (p. ej. GitHub Pages: /nombre-del-repo/).
+let assetBase = `${import.meta.env.BASE_URL}pdfjs/`;
 
 export function setPdfJsLoader(fn: () => Promise<PdfJs>, assets = ''): void {
   loader = fn;

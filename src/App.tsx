@@ -43,7 +43,9 @@ export default function App() {
   }, []);
 
   // Cada pantalla empieza arriba.
-  useEffect(() => window.scrollTo({ top: 0 }), [state.step]);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [state.step]);
 
   const onFiles = useCallback(
     async (files: File[]) => {
@@ -101,7 +103,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col">
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4">
-          <img src="/favicon.svg" alt="" width={32} height={32} />
+          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width={32} height={32} />
           <div className="mr-auto">
             <h1 className="text-lg font-bold leading-tight text-slate-900">DocuFusión</h1>
             <p className="text-xs text-slate-500">Une, separa y ordena documentos. Gratis, sin registro.</p>

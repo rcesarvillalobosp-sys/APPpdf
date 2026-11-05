@@ -76,6 +76,29 @@ Las pruebas (`tests/`) generan en memoria documentos válidos, truncados, corrup
 relaciones rotas, árbol de páginas incoherente), protegidos (PDF cifrado RC4 real, Office cifrado), con extensión
 incorrecta y ZIP bombs, además de pruebas de las operaciones y de la verificación de salida.
 
+## Publicar gratis en GitHub Pages
+
+El repositorio incluye `.github/workflows/deploy-pages.yml`, que en cada push a `main` ejecuta las pruebas,
+compila y publica la web.
+
+1. Crea un repositorio **público** en GitHub (GitHub Pages es gratis en repositorios públicos).
+2. Súbelo (cambia `TU_USUARIO` por tu usuario de GitHub):
+
+   ```bash
+   git remote add origin https://github.com/TU_USUARIO/docufusion.git
+   ```
+
+   ```bash
+   git push -u origin main
+   ```
+
+3. En GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+4. Espera a que termine la acción (pestaña **Actions**). La web quedará en
+   `https://TU_USUARIO.github.io/docufusion/`.
+
+La ruta base (`/docufusion/`) se toma automáticamente del nombre del repositorio. GitHub Pages no permite
+cabeceras propias, así que la política de seguridad (CSP) también se incluye como `<meta>` en el HTML.
+
 ## Despliegue gratuito en Cloudflare Pages
 
 Opción A — desde GitHub (recomendado): sube el repositorio y en Cloudflare → Workers & Pages → Create → Pages →
